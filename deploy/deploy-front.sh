@@ -41,7 +41,7 @@ echo "El dominio resuelve a: ${RESOLVED:-nada}   ·   IP de este servidor: ${MYI
 if [ -n "$MYIP" ] && [ "$RESOLVED" != "$MYIP" ]; then die "$DOMAIN apunta a $RESOLVED y no a este servidor ($MYIP). Corrige el registro A y espera la propagación."; fi
 
 say "2/7 Sitio nginx actual de $DOMAIN"
-mapfile -t OLD_FILES < <(sudo grep -rlE "server_name[^;]*[[:space:]]${DOMAIN//./\\.}[;[:space:]]" /etc/nginx/sites-enabled /etc/nginx/conf.d 2>/dev/null | sort -u || true)
+mapfile -t OLD_FILES < <(sudo grep -RlE "server_name[^;]*[[:space:]]${DOMAIN//./\\.}[;[:space:]]" /etc/nginx/sites-enabled /etc/nginx/conf.d 2>/dev/null | sort -u || true)
 if [ "${#OLD_FILES[@]}" -gt 0 ]; then
   for f in "${OLD_FILES[@]}"; do
     [ "$(basename "$f")" = "$SITE_NAME" ] && continue
