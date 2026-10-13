@@ -1,0 +1,50 @@
+{
+  "name": "artifiel-buss-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Backend Node.js para Artifiel Buss",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "check": "node --check src/config/env.js && node --check src/config/cloudinary.js && node --check src/config/database.js && node --check src/lib/http-error.js && node --check src/lib/access.js && node --check src/lib/users.js && node --check src/middleware/auth.js && node --check src/routes/health.routes.js && node --check src/routes/auth.routes.js && node --check src/routes/account.routes.js && node --check src/routes/categories.routes.js && node --check src/routes/course-builder.routes.js && node --check src/routes/courses.routes.js && node --check src/routes/management.routes.js && node --check src/routes/uploads.routes.js && node --check src/routes/workspaces.routes.js && node --check src/app.js && node --check src/server.js && node --check scripts/check-db.js && node --check scripts/migrate.js && node --check scripts/bootstrap-super-admin.js && node --check scripts/seed-demo-data.js && node --check src/lib/mercadopago.js && node --check src/lib/payment-processor.js && node --check src/lib/payments-store.js && node --check src/lib/startup-warnings.js && node --check src/middleware/rate-limit.js && node --check src/routes/payments.routes.js && node --check scripts/mp-smoke.mjs && node --check tests/payments.test.js && node --check tests/payments-config.test.js && node --check src/lib/course-structure.js && node --check tests/course-structure.test.js && node --check src/lib/certificates.js && node --check src/lib/certificate-pdf.js && node --check src/routes/certificates.routes.js && node --check tests/certificates.test.js && node --check src/routes/certificates-public.routes.js && node --check tests/verify.test.js && node --check src/lib/share.js && node --check src/routes/share.routes.js && node --check tests/share.test.js && node --check scripts/share-verify-e2e.mjs && node --check src/lib/quiz-logic.js && node --check src/lib/quiz-store.js && node --check src/routes/quizzes.routes.js && node --check tests/quizzes.test.js && node --check scripts/quizzes-compat-83.mjs && node --check scripts/quizzes-e2e.mjs",
+    "test:payments": "node --test tests/payments.test.js tests/payments-config.test.js",
+    "test:course": "node --test tests/course-structure.test.js tests/certificates.test.js tests/verify.test.js tests/share.test.js tests/quizzes.test.js",
+    "payments:smoke": "node scripts/mp-smoke.mjs",
+    "db:check": "node scripts/check-db.js",
+    "db:migrate": "node scripts/migrate.js",
+    "users:bootstrap-super-admin": "node scripts/bootstrap-super-admin.js",
+    "seed:demo": "node scripts/seed-demo-data.js",
+    "test:payments:e2e": "node scripts/payments-e2e.mjs",
+    "test:share:e2e": "node scripts/share-verify-e2e.mjs",
+    "test:quizzes:e2e": "node scripts/quizzes-e2e.mjs"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@pdf-lib/fontkit": "1.1.1",
+    "bcryptjs": "3.0.3",
+    "cloudinary": "2.11.0",
+    "cors": "2.8.5",
+    "dotenv": "17.2.2",
+    "express": "5.1.0",
+    "helmet": "8.1.0",
+    "jsonwebtoken": "9.0.3",
+    "mysql2": "3.14.5",
+    "pdf-lib": "1.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "3.1.10"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src"
+    ],
+    "ext": "js,json",
+    "ignore": [
+      "node_modules"
+    ]
+  }
+}
